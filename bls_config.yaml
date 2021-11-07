@@ -1,0 +1,270 @@
+######
+# bls_config.py
+# written by: Aaron Finocchiaro
+# 
+# This is the configuration file for the bls_data_gather.py script. To add a new data source from BLS, 
+# add another section to this configuration file. 
+# 
+# Input guide:
+# seriesIDs = list; a list of BLS series ids, get these from data.bls.gov. REQUIRED
+# start_year = int; the beginning year of the desired data. REQUIRED
+# end_year = int; Year that you want the data to end at. REQUIRED
+# filename = str; Name used to name every outputted file. REQUIRED
+# graph_name = Title for graph
+# graph_type = str; Type of graph, options are 'line' and 'bar'. REQUIRED
+# graph_mode = str; Sets the plotly graph mode when updating the graph.
+# graph_axis_labels = dict; Sets a custom x and y axis label on the graph. 
+# hovertemplate = str; Custom display template for when a point is hovered over
+# sort_descending = bool; Sorts values in a table in descending order instead of ascending
+# transpose = bool; transposes a dataframe when graphing, default=False
+# custom_column_names = dict; sets the dataframe columns to a custom value for graphing.
+# 
+######
+# Section 3.3: Mean Wage Graph NOTE: The previous year data is retired at the end of the year
+# for these series IDs. If this throws an error, please try doing a query for this data at 
+# data.bls.gov or use curl or postman.
+- seriesIDs:
+    - OEUN000000000000000000003  #Entire US
+    - OEUS040000000000000000003  #AZ entire state
+    # - OEUM002942000000000000003  #Lake Havasu City
+    - OEUM004974000000000000003  #Yuma 
+    - OEUM040000100000000000003  #AZ nonmetropolitan area
+  start_year: 2020
+  end_year: 2020
+  filename: 'mean_weekly_wage'
+  graph_name: 'Mean Weekly Wage by Region'
+  graph_type: 'bar'
+  transpose: True
+  hide_legend: True
+
+#section 3.3: Average Weekly Wages
+- seriesIDs:
+    - ENUUS00040010  #entire US
+    - ENU0400040010  #Arizona
+    - ENU0401240010  #La Paz
+    - ENU0402740010  #Yuma
+    # - ENU0401540010  #Mohave
+  start_year: 2015
+  end_year: 2021
+  filename: 'ceds3_3_avg_weekly_wages'
+  graph_name: 'Average Weekly Wages'
+  graph_type: 'line'
+  graph_mode: 'markers+lines'
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Amount in USD"
+  hovertemplate: '%{y:$.2f}'
+  sort_descending: True
+
+#Section 3.4: Unemployment Rates
+- seriesIDs:
+    - LAUST040000000000003 #Arizona unemployment rate
+    - LAUCN040120000000003 #La Paz County
+    - LAUCN040270000000003 #Yuma County
+    # - LAUCN040150000000003 #Mohave
+  start_year: 2015
+  end_year: 2021
+  filename: 'ceds3_4_unemployment_rate'
+  graph_name: 'Unemployment Rates'
+  graph_type: 'line'
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "% Unemployed"
+  hovertemplate: '%{y}%'
+  sort_descending: True
+
+# #section 3.4: La Paz County Unemployment
+- seriesIDs:
+    - LAUCN040120000000004 #La Paz Unemployment
+    - LAUCN040120000000005 #La Paz Employment
+    - LAUCN040120000000003 #La Paz unemployment rate
+  start_year: 2019
+  end_year: 2021
+  filename: 'ceds3_4_la_paz_employment'
+  graph_name: 'La Paz County Employment'
+  custom_column_names:
+    "LAUCN040120000000004" : "Unemployment"
+    "LAUCN040120000000005" : "Employment"
+    "LAUCN040120000000003" : "Unemployment Rate"
+  graph_type: 'bar'
+  sort_descending: True
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Value"
+
+#Section 3.4: Yuma County Unemployment
+- seriesIDs:
+    - LAUCN040270000000004 #Yuma County Unemployment
+    - LAUCN040270000000005 #Yuma County Employment
+    - LAUCN040270000000003 #Yuma County unemployment rate
+  start_year: 2019
+  end_year: 2021
+  filename: 'ceds3_4_yuma_employment'
+  graph_name: 'Yuma County Employment'
+  custom_column_names:
+    "LAUCN040270000000004" : "Unemployment"
+    "LAUCN040270000000005" : "Employment"
+    "LAUCN040270000000003" : "Unemployment Rate"
+  graph_type: 'bar'
+  sort_descending: True
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Value"
+
+#Section 3.4: Mohave County Unemployment
+# - seriesIDs:
+#     - LAUCN040150000000004 #Mohave County Unemployment
+#     - LAUCN040150000000005 #Mohave County Employment
+#     - LAUCN040150000000003 #Mohave County unemployment rate
+#   start_year: 2019
+#   end_year: 2021
+#   filename: 'ceds3_4_mohave_employment'
+#   graph_name: 'Mohave County Employment'
+#   custom_column_names:
+#     "LAUCN040150000000004" : "Unemployment"
+#     "LAUCN040150000000005" : "Employment"
+#     "LAUCN040150000000003" : "Unemployment Rate"
+#   graph_type: 'bar'
+#   sort_descending: True
+#   graph_axis_labels:
+#     "date" : "Date"
+#     "value" : "Value"
+
+#Section 3.4: Lake Havasu City-Kingman, AZ Unemployment
+# - seriesIDs:
+#     - LAUMT042942000000004 #Lake Havasu City-Kingman Unemployment
+#     - LAUMT042942000000005 #Lake Havasu City-Kingman Employment
+#     - LAUMT042942000000003 #Lake Havasu City-Kingman unemployment rate
+#   start_year: 2019
+#   end_year: 2021
+#   filename: 'ceds3_4_lake_havasu_kingman_employment'
+#   graph_name: 'Lake Havasu City-Kingman Employment'
+#   custom_column_names:
+#     "LAUMT042942000000004" : "Unemployment"
+#     "LAUMT042942000000005" : "Employment"
+#     "LAUMT042942000000003" : "Unemployment Rate"
+#   graph_type: 'bar'
+#   sort_descending: True
+#   graph_axis_labels:
+#     "date" : "Date"
+#     "value" : "Value"
+
+#Section 3.4: Yuma, AZ Unemployment
+- seriesIDs:
+    - LAUMT044974000000004 #Yuma MSA Unemployment
+    - LAUMT044974000000005 #Yuma MSA Employment
+    - LAUMT044974000000003 #Yuma MSA unemployment rate
+  start_year: 2019
+  end_year: 2021
+  filename: 'ceds3_4_yuma_msa_employment'
+  graph_name: 'Yuma MSA Employment'
+  custom_column_names:
+    "LAUMT044974000000004" : "Unemployment"
+    "LAUMT044974000000005" : "Employment"
+    "LAUMT044974000000003" : "Unemployment Rate"
+  graph_type: 'bar'
+  sort_descending: True
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Value"
+
+
+
+
+###############################################
+
+#Section 3.4: EMPLOYMENT
+- seriesIDs:
+    - LAUCN040120000000005 #Employment, La Paz County
+    - LAUCN040270000000005 #Employment, Yuma County
+  start_year: 2019
+  end_year: 2021
+  filename: 'employment_yuma_la_paz'
+  graph_name: 'Employment in La Paz and Yuma Counties'
+  graph_type: 'line'
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Total # Employed"
+  hovertemplate: '%{y}%'
+  sort_descending: True
+
+
+#Section 3.4: LABOR FORCE
+- seriesIDs:
+    - LAUCN040120000000006 #Labor Force, La Paz County
+    - LAUCN040270000000006 #Labor Force, Yuma County
+  start_year: 2019
+  end_year: 2021
+  filename: 'labor_force_yuma_la_paz'
+  graph_name: 'Labor Force in La Paz and Yuma Counties'
+  graph_type: 'line'
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Total Labor Force"
+  hovertemplate: '%{y}%'
+  sort_descending: True
+
+
+#Section 3.4: PRIVATE SECTOR EMPLOYEES, YUMA
+- seriesIDs:
+    - SMU04497400500000001 #Private Sector Employees, Yuma County
+  start_year: 2000
+  end_year: 2021
+  filename: 'private_employees_yuma'
+  graph_name: 'Private Employees in Yuma County'
+  custom_column_names:
+    "SMU04497400500000001" : "Private Sector Employees"
+  graph_type: 'line'
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Total Employees, in Thousands"
+  hovertemplate: '%{y}%'
+  sort_descending: True
+
+
+#Section 3.4: YUMA LABOR FORCE, COMPOSITE
+- seriesIDs:
+    - SMU04497403000000001 #Manufacturing
+    - SMU04497405000000001 #Information
+    - SMU04497409094000001 #Government (State & Local)
+    - SMU04497409091000001 #Government (Federal)
+    - SMU04497406500000001 #Education & Health Services
+    - SMU04497407000000001 #Lesiure & Hospitality
+    - SMU04497401500000001 #Mining, Logging, Construction
+    - SMU04497404000000001 #Trades, Transportation, Utilities
+  start_year: 2000
+  end_year: 2021
+  filename: 'yuma_composite'
+  graph_name: 'Yuma, AZ, Total Employees by Industry (in Thousands)'
+  custom_column_names:
+    "SMU04497403000000001" : "Manufacturing"
+    "SMU04497405000000001" : "Information"
+    "SMU04497409094000001" : "Government (State & Local)"
+    "SMU04497409091000001" : "Government (Federal)"
+    "SMU04497406500000001" : "Education & Health Services"
+    "SMU04497407000000001" : "Leisure & Hospitality"
+    "SMU04497401500000001" : "Mining, Logging, & Construction"
+    "SMU04497404000000001" : "Trades, Transportation, & Utilities"
+  graph_type: 'line'
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Total Employees, in Thousands"
+  hovertemplate: '%{y}%'
+  sort_descending: True
+
+
+#Section 3.4: YUMA LABOR FORCE, COMPOSITE
+- seriesIDs:
+  - OEUM004974000000045000001
+  - OEUM004974000000045000003
+  - OEUM004974000000045000004
+  start_year: 2020
+  end_year: 2020
+  filename: 'yuma_agriculture'
+  graph_name: 'Farming, Fishing, & Forestry in Yuma County'
+  graph_type: 'bar'
+  transpose: True
+  custom_column_names:
+    "OEUM004974000000045000001" : "Total employment"
+    "OEUM004974000000045000003" : "Hourly mean wage" 
+    "OEUM004974000000045000004" : "Annual mean wage"
