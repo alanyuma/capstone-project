@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/waedd_test.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <title>District Socio-Economic Data</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Sidebar</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="board.html">Board</a>
+                </li>
+                <li>
+                    <a href="ceds.html">CEDS</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li>
+                    <a href="distress.html">Distress</a>
+                </li>
+                <li>
+                    <a href="files.html">Files</a>
+                </li>
+                <li>
+                    <a href="meetings.html">Meetings</a>
+                </li>
+                <li>
+                    <a href="partners.html">Partners</a>
+                </li>
+                <li>
+                    <a href="projects.html">Projects</a>
+                </li>
+                <li>
+                    <a href="sitemap.html">Sitemap</a>
+                </li>
+                <li>
+                    <a href="twitter.html">Twitter</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- Page Content -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+                </div>
+            </nav>
+
+            <div class="container">
+              <h2>5.0 Workforce Development & Use</h2>
+              <h3 id="c52">5.1 Greater Yuma County (including La Paz County) Economic Region
+              </h3>
+              <p>
+                  High unemployment remains an issue in Yuma. Citing August 2019 data, the Bureau of Labor Statistics ranked Yuma as #1 among the 13 U.S. cities that post unemployment rates above 15 percent. Yuma's agricultural workforce, which adjusts to the picking season, is cited as the reason for the high unemployment by the Arizona Department of Commerce. Yuma County is 5,519 sqaure miles in area and has a population of {{ context_dict['population']['Yuma County, Arizona'] | int | comma_separated }} people, and a population density of {{ context_dict['pop_density:Yuma County, Arizona'] }} people per sqaure mile. Yuma county has a total of {{ context_dict['total_households']['Yuma County, Arizona'] | int | comma_separated }} households, with an average household size of {{ context_dict['avg_hh_size']['Yuma County, Arizona'] }}.
+              </p>
+              <p>
+                  La Paz County is 5,519 sqaure miles in area and has a population of {{ context_dict['population']['La Paz County, Arizona'] | int | comma_separated }} people, and a population density of {{ context_dict['pop_density:La Paz County, Arizona'] }} people per sqaure mile. La Paz County has a total of {{ context_dict['total_households']['La Paz County, Arizona'] | int | comma_separated }} households, with an average household size of {{ context_dict['avg_hh_size']['La Paz County, Arizona'] }}.
+              </p>
+              <p>
+                  Yuma County has always been seen as a lower wage area. Yuma County also chronically has one of the highest unemployment rates in the country, approaching a high of 30 percent at one time (August 2010). But many of the unemployed lack the training, skills, and certification to fill the better-paying jobs that are available. Companies with the need for more skilled labor come to job fairs, only to leave empty-handed because they can't find qualified applicants.
+              </p>
+              <p>
+                  Not only do available jobs go wanting for lack of qualified applicants, but it also means the area has trouble attracting companies that offer better-paying jobs. Yuma County continues to be the destination for the lower-paying jobs. The area must have to have a higher-skilled workforce to attract better-paying jobs. On the other hand, the lack of higher-skilled jobs drives young people to leave the community to seek careers elsewhere. And others who come to Yuma as the military spouses and professionals often cannot find a job here to match their skills.
+              </p>
+                  In Yuma County, {{ context_dict['pct_hh_between_15_50']['Yuma County, Arizona'] }}% of households earn between $15,000 to $50,000, {{ context_dict['employment']['Yuma County, Arizona'] | int | comma_separated }} persons employed total, an average per-capita income of ${{ context_dict['per_capita_income']['Yuma County, Arizona'] | int | comma_separated }}, and {{ context_dict['poverty_rate']['Yuma County, Arizona'] }}% of people living below the poverty level. For La Paz County, {{ context_dict['pct_hh_between_15_50']['La Paz County, Arizona'] }}% of households earn between $15,000 to $50,000, a total employment of {{ context_dict['employment']['La Paz County, Arizona'] | int | comma_separated }} persons, and an average per-capita income of ${{ context_dict['per_capita_income']['La Paz County, Arizona'] | int | comma_separated }}. The poverty rate in La Paz County is {{ context_dict['poverty_rate']['La Paz County, Arizona'] }}%.
+              <p>
+                  The community has made some strides, such as the STEAM (science, technology, engineering, agriculture, and math) program offered by Yuma Union High School District, in partnership with Arizona Western College. In collaboration with the University of Arizona, the college is also making it easier for Yumans to pursue college degrees in engineering. 
+              </p>
+              <p>
+                  The top ten employers in Yuma County based on number of employees are: #1 U.S. Army Proving Ground (YPG) (military); #2 Yuma Regional Medical Center (healthcare); #3 Yuma Elementary School District (education) #4 Wal-Mart Stores (retail); #5 City of Yuma (government); #6 Yuma County (government); #7 U.S. Marine Corps Air Station (MCAS) (military); #8 Bose Corporation (manufacturing); #9 US Border Patrol (government); and #10 ACT, Advanced Call Center Technologies (call center.)
+              </p>
+              <p>
+                  The unemployment rate in Yuma County is {{ context_dict['current_unemployment:Yuma County'][1] }}% as of {{ context_dict['current_unemployment:Yuma County'][0] }}, with job growth of - 0.42%. Future job growth over the next ten years is predicted to be 15.46%. For the same month, Yuma County's unemployment rate is {{ context_dict['current_unemployment_vs_AZ:Yuma County'][0] }}% {{ context_dict['current_unemployment_vs_AZ:Yuma County'][1] }} than the Arizona rate. The La Paz County unemployment rate is {{ context_dict['current_unemployment:La Paz County'][1] }}% as of {{ context_dict['current_unemployment:La Paz County'][0] }}. Compared to the rest of Arizona, La Paz County's unemployment rate is {{ context_dict['current_unemployment_vs_AZ:La Paz County'][0] }}% {{ context_dict['current_unemployment_vs_AZ:La Paz County'][1] }}. 
+              </p>
+              <h6><a href="ceds.html">Return to CEDS</a></h6>
+              <hr>
+              <footer class="w3-container w3-theme" style="padding:32px">
+                <q>We build connections with the people and communities in La Paz and Yuma counties.</q>
+              </footer>
+            </div>
+        </div>
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script>
+            $(document).ready(function() {
+
+                $('#sidebarCollapse').on('click', function() {
+                    $('#sidebar').toggleClass('active');
+                });
+
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#sidebarCollapse').on('click', function() {
+                    $('#sidebar').toggleClass('active');
+                });
+
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#sidebarCollapse').on('click', function() {
+                    // open or close navbar
+                    $('#sidebar').toggleClass('active');
+                    // close dropdowns
+                    $('.collapse.in').toggleClass('in');
+                    // and also adjust aria-expanded attributes we use for the open/closed arrows
+                    // in our CSS
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+
+            });
+        </script>
+</body>
+
+</html>
